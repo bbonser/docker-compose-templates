@@ -1,3 +1,3 @@
 Welcome
 
-This is a collection of some docker-compose templates ready for use.
+This is a collection of docker-compose templates ready for use.
