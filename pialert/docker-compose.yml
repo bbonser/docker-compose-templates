@@ -1,0 +1,9 @@
+---
+version: '3.8'
+services:
+  pialert:
+    container_name: pialert
+    image: jokobsk/pi.alert
+    network_mode: host
+    volumes:
+      - /docker/containers/pialert/config:/home/pi/pialert/config
