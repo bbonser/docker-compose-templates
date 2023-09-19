@@ -5,7 +5,8 @@ on:
 
 jobs:
   update-compose:
-    runs_on: [self-hosted, linux] # assuming you are running on a self-hosted Linux runner
+    runs-on:
+      - self-hosted
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
