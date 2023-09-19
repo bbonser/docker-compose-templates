@@ -5,14 +5,17 @@ on:
 
 jobs:
   update-compose:
-    runs-on:
-      - self-hosted
+    runs-on: [self-hosted, linux] # assuming you are running on a self-hosted Linux runner
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
     - name: Check for updates in docker-compose and update containers
       run: |
-        sudo cd /opt/docker
-        sudo docker-compose pull
-        sudo docker-compose up -d
+        for dir in /opt/docker/*/; do
+          if [[ -f "$dir/docker-compose.yml" ]]; then
+            echo "Updating containers in $dir"
+            sudo docker-compose -f "$dir/docker-compose.yml" pull
+            sudo docker-compose -f "$dir/docker-compose.yml" up -d
+          fi
+        done
