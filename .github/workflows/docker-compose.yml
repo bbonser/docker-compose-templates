@@ -15,7 +15,7 @@ jobs:
         for dir in /opt/docker/*/; do
           if [[ -f "$dir/docker-compose.yml" ]]; then
             echo "Updating containers in $dir"
-            sudo docker-compose -f "$dir/docker-compose.yml" pull
-            sudo docker-compose -f "$dir/docker-compose.yml" up -d
+            sudo docker compose -f "$dir/docker-compose.yml" pull
+            sudo docker compose -f "$dir/docker-compose.yml" up -d
           fi
         done
