@@ -1,12 +1,11 @@
 name: Update Docker Compose
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # This will run the action daily at midnight. Adjust the cron expression as needed.
+  workflow_dispatch:
 
 jobs:
   update-compose:
-    runs-on: [self-hosted, linux] # assuming you are running on a self-hosted Linux runner
+    runs_on: [self-hosted, linux] # assuming you are running on a self-hosted Linux runner
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
