@@ -1,0 +1,18 @@
+name: Update Docker Compose
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # This will run the action daily at midnight. Adjust the cron expression as needed.
+
+jobs:
+  update-compose:
+    runs-on: [self-hosted, linux] # assuming you are running on a self-hosted Linux runner
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Check for updates in docker-compose and update containers
+      run: |
+        sudo cd /opt/docker
+        sudo docker-compose pull
+        sudo docker-compose up -d
