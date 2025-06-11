@@ -7,7 +7,7 @@ volumes:
 
 services:
   db:
-    image: mariadb:11.7
+    image: mariadb:11.8
     restart: always
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     volumes:
